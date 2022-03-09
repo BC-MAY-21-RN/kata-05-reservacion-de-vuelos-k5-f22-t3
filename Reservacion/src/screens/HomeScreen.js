@@ -1,25 +1,49 @@
 import React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { InputText } from '../components/InputText/index';
-import { ButtonNext } from '../components/Button';
+import { View, StyleSheet, TextInput } from 'react-native';
+import { ButtonPrimary } from '../components/ButtonPrimary/index';
+import { TextPrimary } from '../components/TextPrimary/index';
+import { TextSecond } from '../components/TextSecond';
 
 export const HomeScreen = ({navigation}) => {
+  const [text, onChangeText] = React.useState("Useless Text");
+  const [number, onChangeNumber] = React.useState(null);
+  
   return (
-    <View style={styles.container}>
-        <Icon name="plane" size={70} color="red"/>
-        <InputText />
-        <Button
-            title="Booking"
+    <View style={styles.container}> 
+
+        <View style={styles.content}>
+          <TextPrimary 
+            text={'Welcome'} 
+            color={'black'} 
+            fontSize={60} 
+            align={'center'}
+            /> 
+          <ButtonPrimary 
             onPress={() => navigation.navigate('Booking')}
-      />
+            text={"Login"}/>
+          <TextSecond 
+            text={'or'} 
+            color={'grey'} 
+            fontSize={14} 
+            align={'center'}
+          />
+          <ButtonPrimary 
+            onPress={() => navigation.navigate('Signup')} 
+            text={"Sing Up"}/>
+        </View>
+        
     </View>
   );
 };
 
 const styles = StyleSheet.create({
     container:{
-      height: '100%',
       backgroundColor: 'white',
+      height: '100%',
+      padding: 15,
+    },
+    content:{
+      pasition: 'absolute',
+      top:'28%',
     }
 })

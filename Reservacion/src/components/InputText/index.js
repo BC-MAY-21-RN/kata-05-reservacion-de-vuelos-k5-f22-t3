@@ -1,13 +1,16 @@
 import { StyleSheet, TextInput, View } from 'react-native'
 import React from 'react'
 
-export const InputText = () => {
+export const InputText = (props) => {
+
+  const { text } = props
   return (
     <View>
       <TextInput
-        placeholder="Email"
+        placeholder={text}
         placeholderTextColor={'grey'}
         style={styles.input}
+        
       />
     </View>
   )
