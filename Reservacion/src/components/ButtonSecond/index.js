@@ -1,11 +1,12 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 
-export const ButtonPrimary = (props) => {
+export const ButtonSecond = (props) => {
     const { onPress, text, } =props;
     return (
         <TouchableOpacity onPress = { onPress }
             style={styles.containerTouch}>
+            {/* <Image style={{height: 10}} source={{uri: 'https://commons.wikimedia.org/wiki/File:Google_%22G%22_Logo.svg#/media/File:Google_%22G%22_Logo.svg'}}/> */}
             <Text style={styles.text}>
                 {text}
             </Text>
