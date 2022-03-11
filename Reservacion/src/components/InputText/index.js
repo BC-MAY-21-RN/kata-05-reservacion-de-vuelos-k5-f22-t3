@@ -5,14 +5,11 @@ export const InputText = (props) => {
 
   const { text } = props
   return (
-    <View>
       <TextInput
         placeholder={text}
         placeholderTextColor={'grey'}
         style={styles.input}
-        
       />
-    </View>
   )
 };
 

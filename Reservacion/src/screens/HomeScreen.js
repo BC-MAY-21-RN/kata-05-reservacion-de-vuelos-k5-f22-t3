@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput, Image } from 'react-native';
 import { ButtonPrimary } from '../components/ButtonPrimary/index';
 import { TextPrimary } from '../components/TextPrimary/index';
 import { TextSecond } from '../components/TextSecond';
@@ -20,7 +20,8 @@ export const HomeScreen = ({navigation}) => {
             /> 
           <ButtonPrimary 
             onPress={() => navigation.navigate('Booking')}
-            text={"Login"}/>
+            text={"Login"}
+            status={true}/>
           <TextSecond 
             text={'or'} 
             color={'grey'} 
@@ -29,9 +30,9 @@ export const HomeScreen = ({navigation}) => {
           />
           <ButtonPrimary 
             onPress={() => navigation.navigate('Signup')} 
-            text={"Sing Up"}/>
+            text={"Sing Up"}
+            status={true}/>
         </View>
-        
     </View>
   );
 };

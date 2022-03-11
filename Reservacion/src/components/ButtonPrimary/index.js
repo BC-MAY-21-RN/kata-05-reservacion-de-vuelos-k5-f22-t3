@@ -1,15 +1,18 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View, Image } from 'react-native';
 
 export const ButtonPrimary = (props) => {
-    const { onPress, text, } =props;
+    const { onPress, text, status } =props;
+    const nPress = status ? onPress : null;    
+
     return (
-        <TouchableOpacity onPress = { onPress }
-            style={styles.containerTouch}>
-            <Text style={styles.text}>
-                {text}
-            </Text>
-        </TouchableOpacity>
+            <TouchableOpacity onPress = { nPress }
+                style={status ? styles.containerTouch : styles.containerTouchD}>
+                <Text style={styles.text}>
+                    {text}
+                </Text>
+            </TouchableOpacity>
+    
     )
 }
 
@@ -26,10 +29,28 @@ const styles = StyleSheet.create({
             width: -2,
             height: 23,
         },
+        shadowOpacity: 0.9,
+        shadowRadius: 8,
+        shadowColor: "#0061FF",
+        elevation: 20,
+    }, 
+    containerTouchD:{
+        alignSelf:'center',
+        width: '90%',
+        backgroundColor: "#b6b7ba",
+        borderRadius: 10,
+        marginVertical: 20,
+        marginHorizontal: 20,
+        padding: 5,
+        shadowOffset: {
+            width: -2,
+            height: 23,
+        },
         shadowOpacity: 0.1,
         shadowRadius: 8,
         elevation: 20,
     }, 
+
     text:{
         alignSelf:'center',
         color: 'white',

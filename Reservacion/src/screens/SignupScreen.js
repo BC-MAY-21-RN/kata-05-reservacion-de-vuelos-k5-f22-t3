@@ -6,6 +6,8 @@ import { ButtonPrimary } from '../components/ButtonPrimary/index';
 import { TextPrimary } from '../components/TextPrimary/index';
 import { TextSecond } from '../components/TextSecond';
 import CheckBox from '@react-native-community/checkbox';
+import { ButtonSecond } from '../components/ButtonSecond';
+import { Check } from '../components/Check';
 
 export const SignupScreen = ({navigation}) => {
   const [text, onChangeText] = useState();
@@ -16,6 +18,9 @@ export const SignupScreen = ({navigation}) => {
   return ( 
     <View style={styles.container}> 
         
+
+        {/* ----------------------------- */}
+
         <TextPrimary 
           text={'Sign Up'} 
           color={'#5b6ef7'} 
@@ -62,28 +67,10 @@ export const SignupScreen = ({navigation}) => {
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>
         {/* --------------------------------- */}
 
-        <View style={styles.containerCheck}>
-            <CheckBox
-                disabled={false}
-                value={toggleCheckBox}
-                tintColors={{ true: '#5b6ef7', false: '#b6b7ba' }}
-                onValueChange={(newValue) => setToggleCheckBox(newValue)}
-            />
-            <Text style={styles.textCheck}>I agree to the Terms and Privacy Policy</Text>
-        </View>
-        <View style={styles.containerCheck}>
-            <CheckBox
-                disabled={false}
-                value={toggleBox}
-                tintColors={{ true: '#5b6ef7', false: '#b6b7ba' }}
-                onValueChange={(newValue) => setToggleBox(newValue)}
-            />
-            <Text>Suscribe for select product updates.</Text>
-            {/*<Image 
-              style={{height: 10}} 
-              source={require('./assets/Google__G__Logo.svg')}
-            />*/}
-        </View>
+        
+        <Check status={false} text={"I agree to the Terms and Privacy Policy"}/>
+        <Check status={false} text={"Suscribe for select product updates."}/>
+        
 
 
 
@@ -99,9 +86,14 @@ export const SignupScreen = ({navigation}) => {
             fontSize={14} 
             align={'center'}
           />
-          <ButtonPrimary 
+
+          
+          <ButtonSecond 
             onPress={() => navigation.navigate('Booking')} 
-            text={"Sing Up whith Google"}/>
+            text={"Sing Up whith Google"}
+          />
+
+
             <View style={styles.containerFooter}>
                 <Text style={styles.textSize}>Already have an account?</Text>
                 <TouchableOpacity  onPress={() => navigation.navigate('Home')}>
@@ -109,8 +101,6 @@ export const SignupScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
         </View>
-        <Image style={{height: 10}} source={{uri: 'https://commons.wikimedia.org/wiki/File:Google_%22G%22_Logo.svg#/media/File:Google_%22G%22_Logo.svg'}}/>
-
 
     </View>
   );
