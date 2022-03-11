@@ -4,15 +4,15 @@ import { useState } from 'react';
 import CheckBox from '@react-native-community/checkbox';
 
 export const Check = (props) => {
-    const { status, text } =props;
-    const [toggleBox, setToggleBox] = useState(false)
+    const { value, onValueChange, text } =props;
+  
     return (
         <View style={styles.containerCheck}>
             <CheckBox
-            disabled={status}
-            value={toggleBox}
+            
+            value={value}
             tintColors={{ true: '#5b6ef7', false: '#b6b7ba' }}
-            onValueChange={(newValue) => setToggleBox(newValue)}
+            onValueChange={onValueChange}
             />
             <Text>{text}</Text>
         </View>
