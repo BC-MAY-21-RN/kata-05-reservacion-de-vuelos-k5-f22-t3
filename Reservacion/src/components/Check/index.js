@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { useState } from 'react';
+import { View, Text } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
+import { styles } from './styles';
 
 export const Check = (props) => {
     const { value, onValueChange, text } =props;
@@ -18,10 +18,3 @@ export const Check = (props) => {
         </View>
     )
 }
-const styles=StyleSheet.create({
-    containerCheck:{
-        flexDirection: 'row',
-        alignItems: 'center',
-        color: '#b6b7ba',
-    },
-})

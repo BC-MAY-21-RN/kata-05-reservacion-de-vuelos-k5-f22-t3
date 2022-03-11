@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native'
+import { styles } from './styles'
 
 export const TextSecond = (props) => {
     const {text, color, fontSize, align } = props;
@@ -16,9 +17,3 @@ export const TextSecond = (props) => {
     )
 }
 
-const styles = StyleSheet.create({
-    text:{
-        marginVertical: 4,
-        marginHorizontal: 0
-    }
-})

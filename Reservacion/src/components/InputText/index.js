@@ -1,5 +1,6 @@
-import { StyleSheet, TextInput, View } from 'react-native'
+import { TextInput, View } from 'react-native'
 import React from 'react'
+import { styles } from './styles'
 
 export const InputText = (props) => {
 
@@ -12,12 +13,3 @@ export const InputText = (props) => {
       />
   )
 };
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderBottomWidth: 3,
-    padding: 10,
-  },
-})

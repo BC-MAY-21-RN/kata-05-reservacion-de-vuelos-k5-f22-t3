@@ -1,14 +1,12 @@
 import React from 'react';
-import { View, TextInput, Text, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
-import { Icon } from 'react-native-vector-icons/FontAwesome5';
-import { ButtonPrimary } from '../components/ButtonPrimary/index';
-import { TextPrimary } from '../components/TextPrimary/index';
-import { TextSecond } from '../components/TextSecond';
-import CheckBox from '@react-native-community/checkbox';
-import { ButtonSecond } from '../components/ButtonSecond';
-import { Check } from '../components/Check';
-import {styles} from "./styles"
+import { ButtonPrimary } from '../../components/ButtonPrimary/index';
+import { TextPrimary } from '../../components/TextPrimary/index';
+import { TextSecond } from '../../components/TextSecond/index';
+import { ButtonSecond } from '../../components/ButtonSecond/index';
+import { Check } from '../../components/Check/index';
+import { styles } from './styles'
 
 export const SignupScreen = ({navigation}) => {
   const [username, onChangeUsername] = useState('');
@@ -58,7 +56,7 @@ export const SignupScreen = ({navigation}) => {
             value={email}
             placeholder="email"
             placeholderTextColor={'grey'}
-            style={styles.input}
+            style={!!email?styles.inputSelected:styles.input}
             onChangeText={onChangeEmail}
         />
         <TextSecond 
@@ -70,7 +68,7 @@ export const SignupScreen = ({navigation}) => {
             value={password}
             placeholder="password"
             placeholderTextColor={'grey'}
-            style={styles.input}
+            style={!!password?styles.inputSelected:styles.input}
             onChangeText={onChangePassword}
         />
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>        

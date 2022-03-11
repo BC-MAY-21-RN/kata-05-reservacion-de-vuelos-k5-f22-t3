@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { Text } from 'react-native';
+import styles from './styles'
 
 export const TextPrimary = (props) => {
     const {text, color, fontSize, align } = props;
@@ -15,11 +16,3 @@ export const TextPrimary = (props) => {
             </Text>
     )
 }
-
-const styles = StyleSheet.create({
-    text:{
-        fontWeight: 'bold',
-        marginVertical: 4,
-        marginHorizontal: 0
-    }
-})

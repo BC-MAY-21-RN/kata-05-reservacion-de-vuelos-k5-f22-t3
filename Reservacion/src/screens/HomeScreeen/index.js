@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Image } from 'react-native';
-import { ButtonPrimary } from '../components/ButtonPrimary/index';
-import { TextPrimary } from '../components/TextPrimary/index';
-import { TextSecond } from '../components/TextSecond';
+import { View } from 'react-native';
+import { ButtonPrimary } from '../../components/ButtonPrimary/index';
+import { TextPrimary } from '../../components/TextPrimary/index';
+import { TextSecond } from '../../components/TextSecond/index';
+import { styles } from './styles';
 
 export const HomeScreen = ({navigation}) => {
   const [text, onChangeText] = React.useState("Useless Text");
@@ -37,14 +38,3 @@ export const HomeScreen = ({navigation}) => {
   );
 };
 
-const styles = StyleSheet.create({
-    container:{
-      backgroundColor: 'white',
-      height: '100%',
-      padding: 15,
-    },
-    content:{
-      pasition: 'absolute',
-      top:'28%',
-    }
-})

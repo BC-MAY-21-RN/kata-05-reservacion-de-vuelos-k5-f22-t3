@@ -1,5 +1,4 @@
-
-import {     StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     container:{
@@ -16,7 +15,7 @@ export const styles = StyleSheet.create({
         padding: 10,
     },
     inputSelected:{
-      borderColor:'red',
+      borderColor:'#5b6ef7',
       borderWidth: 1,
       padding: 10,
   },
