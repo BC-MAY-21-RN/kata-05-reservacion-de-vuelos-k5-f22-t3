@@ -86,7 +86,7 @@ export const SignupScreen = ({navigation}) => {
             align={'center'}
           />
           <ButtonSecond 
-            onPress={() => navigation.navigate('Booking')} 
+            onPress={() => navigation.navigate('Login')} 
             text={"Sing Up whith Google"}
           />
             <View style={styles.containerFooter}>

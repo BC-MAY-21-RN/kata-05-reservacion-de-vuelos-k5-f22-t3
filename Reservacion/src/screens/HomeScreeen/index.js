@@ -20,7 +20,7 @@ export const HomeScreen = ({navigation}) => {
             align={'center'}
             /> 
           <ButtonPrimary 
-            onPress={() => navigation.navigate('Booking')}
+            onPress={() => navigation.navigate('Login')}
             text={"Login"}
             status={true}/>
           <TextSecond 
