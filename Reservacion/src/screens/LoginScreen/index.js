@@ -10,16 +10,16 @@ export const LoginScreen = ({navigation}) => {
   const [username, onChangeUsername] = useState('');
   const [password, onChangePassword] = useState('')
   
-  const isAllData = !!username&&!!email&&!!password&&!!toggleBox
-  const handleSingUp=()=>{
-    if(isAllData){
-      console.log(username,email,password, toggleBox,toggleBox1)
-    }   
-    else{
-      console.log("some value missing not singing up")
-    }
-    return
-  }
+    const isAllData = username&&!!password
+    // const handleLoginScreen=()=>{
+    // if(isAllData){
+    //   console.log(username,password)
+    // }   
+    // else{
+    //   console.log("some value missing not singing up")
+    // }
+    // return
+    // }
 
   return ( 
     <View style={styles.container}> 
