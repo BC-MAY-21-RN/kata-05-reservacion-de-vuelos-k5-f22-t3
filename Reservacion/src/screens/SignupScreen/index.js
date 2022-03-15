@@ -2,20 +2,35 @@ import React from 'react';
 import { View, TextInput, Text, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
-import { TextPrimary } from '../../components/TextPrimary/index';
-import { TextSecond } from '../../components/TextSecond/index';
 import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
 import { styles } from './styles'
+import { TextTitle } from '../../components/TextTitle';
 
 export const SignupScreen = ({navigation}) => {
-  const [username, onChangeUsername] = useState('');
-  const [email, onChangeEmail] = useState('');
-  const [password, onChangePassword] = useState('')
 
-  const [toggleBox, onValueChange] = useState(false)
-  const [toggleBox1, onValueChange1] = useState(false)
-  
+  const [loginData,setLoginData]=useState({
+    username:'',
+    email:'',
+    password:'',
+    toggleBox:'',
+    toggleBox1:'',
+  })
+
+  const {
+    username,
+    email,
+    password,
+    toggleBox,
+    toggleBox1,} = loginData
+
+  const handleChange =(value, key)=>{
+    setLoginData({
+      ...loginData,
+      [key]:value
+    })
+  }
+
   const isAllData = !!username&&!!email&&!!password&&!!toggleBox
   const handleSingUp=()=>{
     if(isAllData){
@@ -30,12 +45,13 @@ export const SignupScreen = ({navigation}) => {
 
   return ( 
     <View style={styles.container}> 
-        <TextPrimary 
+        <TextTitle 
           text={'Sign Up'} 
           color={'#5b6ef7'} 
           fontSize={22} 
+          fontWeight={'bold'}
         /> 
-        <TextSecond 
+        <TextTitle 
             text={'First Name'} 
             color={'grey'} 
             fontSize={14} 
@@ -45,9 +61,9 @@ export const SignupScreen = ({navigation}) => {
             placeholder="username"
             placeholderTextColor={'grey'}
             style={!!username?styles.inputSelected:styles.input}
-            onChangeText={onChangeUsername}
+            onChangeText={(value)=>handleChange(value,'username')}
         />
-        <TextSecond 
+        <TextTitle 
             text={'Email'} 
             color={'grey'} 
             fontSize={14} 
@@ -57,9 +73,9 @@ export const SignupScreen = ({navigation}) => {
             placeholder="email"
             placeholderTextColor={'grey'}
             style={!!email?styles.inputSelected:styles.input}
-            onChangeText={onChangeEmail}
+            onChangeText={(value)=>handleChange(value,'email')}
         />
-        <TextSecond 
+        <TextTitle 
             text={'Password'} 
             color={'grey'} 
             fontSize={14} 
@@ -69,17 +85,17 @@ export const SignupScreen = ({navigation}) => {
             placeholder="password"
             placeholderTextColor={'grey'}
             style={!!password?styles.inputSelected:styles.input}
-            onChangeText={onChangePassword}
+            onChangeText={(value)=>handleChange(value,'password')}
         />
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>        
-        <Check value={toggleBox}  onValueChange={ onValueChange} text={"I agree to the Terms and Privacy Policy"}/>
-        <Check value={toggleBox1}  onValueChange={ onValueChange1}  text={"Suscribe for select product updates."}/>
+        <Check value={toggleBox}  onValueChange={ (value)=>handleChange(value,'toggleBox')} text={"I agree to the Terms and Privacy Policy"}/>
+        <Check value={toggleBox1}  onValueChange={ (value)=>handleChange(value,'toggleBox1')}  text={"Suscribe for select product updates."}/>
         <View style={styles.content}>
           <ButtonPrimary 
             onPress={handleSingUp}
             disabled = {isAllData}
             text={"Sign Up"}/>
-          <TextSecond 
+          <TextTitle 
             text={'or'} 
             color={'grey'} 
             fontSize={14} 

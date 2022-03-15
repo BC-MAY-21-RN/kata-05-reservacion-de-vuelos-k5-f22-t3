@@ -1,9 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
-import { TextPrimary } from '../../components/TextPrimary/index';
-import { TextSecond } from '../../components/TextSecond/index';
 import { styles } from './styles';
+import { TextTitle } from '../../components/TextTitle';
 
 export const HomeScreen = ({navigation}) => {
   const [text, onChangeText] = React.useState("Useless Text");
@@ -11,19 +10,19 @@ export const HomeScreen = ({navigation}) => {
   
   return (
     <View style={styles.container}> 
-
         <View style={styles.content}>
-          <TextPrimary 
+          <TextTitle         
             text={'Welcome'} 
-            color={'black'} 
             fontSize={60} 
             align={'center'}
+            color={'#5b6ef7'}
+            fontWeight={'bold'}
             /> 
-          <ButtonPrimary 
+          <ButtonPrimary  
             onPress={() => navigation.navigate('Login')}
             text={"Login"}
             status={true}/>
-          <TextSecond 
+          <TextTitle 
             text={'or'} 
             color={'grey'} 
             fontSize={14} 

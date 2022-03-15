@@ -2,9 +2,8 @@ import React from 'react';
 import { View, TextInput } from 'react-native';
 import { useState } from 'react';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
-import { TextPrimary } from '../../components/TextPrimary/index';
-import { TextSecond } from '../../components/TextSecond/index';
 import { styles } from './styles'
+import { TextTitle } from '../../components/TextTitle';
 
 export const LoginScreen = ({navigation}) => {
   const [username, onChangeUsername] = useState('');
@@ -23,10 +22,11 @@ export const LoginScreen = ({navigation}) => {
 
   return ( 
     <View style={styles.container}> 
-        <TextPrimary 
+        <TextTitle 
           text={'Login'} 
           color={'#5b6ef7'} 
           fontSize={22} 
+          fontWeight={'bold'}
         />
         <TextInput
             value={username}
@@ -35,7 +35,7 @@ export const LoginScreen = ({navigation}) => {
             style={!!username?styles.inputSelected:styles.input}
             onChangeText={onChangeUsername}
         />
-        <TextSecond 
+        <TextTitle 
             text={'Password'} 
             color={'grey'} 
             fontSize={14} 
