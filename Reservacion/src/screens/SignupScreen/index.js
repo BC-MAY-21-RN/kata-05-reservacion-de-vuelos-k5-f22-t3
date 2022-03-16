@@ -6,6 +6,7 @@ import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
 import { styles } from './styles'
 import { TextTitle } from '../../components/TextTitle';
+import { InputText } from '../../components/InputText';
 
 export const SignupScreen = ({navigation}) => {
 
@@ -56,7 +57,7 @@ export const SignupScreen = ({navigation}) => {
             color={'grey'} 
             fontSize={14} 
         />
-        <TextInput
+        <InputText
             value={username}
             placeholder="username"
             placeholderTextColor={'grey'}
@@ -68,7 +69,7 @@ export const SignupScreen = ({navigation}) => {
             color={'grey'} 
             fontSize={14} 
         />
-        <TextInput
+        <InputText
             value={email}
             placeholder="email"
             placeholderTextColor={'grey'}
@@ -80,7 +81,7 @@ export const SignupScreen = ({navigation}) => {
             color={'grey'} 
             fontSize={14} 
         />
-        <TextInput
+        <InputText
             value={password}
             placeholder="password"
             placeholderTextColor={'grey'}

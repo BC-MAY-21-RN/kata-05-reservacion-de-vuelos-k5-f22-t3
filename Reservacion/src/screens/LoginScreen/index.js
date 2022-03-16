@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { styles } from './styles'
 import { TextTitle } from '../../components/TextTitle';
+import { InputText } from '../../components/InputText/index'
 
 export const LoginScreen = ({navigation}) => {
   const [username, onChangeUsername] = useState('');
@@ -28,7 +29,7 @@ export const LoginScreen = ({navigation}) => {
           fontSize={22} 
           fontWeight={'bold'}
         />
-        <TextInput
+        <InputText
             value={username}
             placeholder="username"
             placeholderTextColor={'grey'}
@@ -40,7 +41,7 @@ export const LoginScreen = ({navigation}) => {
             color={'grey'} 
             fontSize={14} 
         />
-        <TextInput
+        <InputText
             value={password}
             placeholder="password"
             placeholderTextColor={'grey'}

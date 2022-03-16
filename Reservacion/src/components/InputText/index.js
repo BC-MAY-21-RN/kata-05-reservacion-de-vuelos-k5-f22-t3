@@ -4,12 +4,15 @@ import { styles } from './styles'
 
 export const InputText = (props) => {
 
-  const { text } = props
+  const { value, placeholder, placeholderTextColor, style, onChangeText } = props
+
   return (
       <TextInput
-        placeholder={text}
-        placeholderTextColor={'grey'}
-        style={styles.input}
+        placeholder={placeholder}
+        placeholderTextColor={placeholderTextColor}
+        style={style}
+        onChange={onChangeText}
+        value={value}
       />
   )
 };
