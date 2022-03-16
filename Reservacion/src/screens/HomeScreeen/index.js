@@ -1,12 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
-import { styles } from './styles';
 import { TextTitle } from '../../components/TextTitle';
+import { styles } from '../../utils/stylesGlobal';
 
 export const HomeScreen = ({navigation}) => {
-  const [text, onChangeText] = React.useState("Useless Text");
-  const [number, onChangeNumber] = React.useState(null);
   
   return (
     <View style={styles.container}> 

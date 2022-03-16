@@ -4,10 +4,14 @@ export const styles = StyleSheet.create({
     container:{
       backgroundColor: 'white',
       height: '100%',
-      padding: 15,
+      paddingHorizontal: 22,
     },
-    content:{
+    containerButton:{
       pasition: 'absolute',
-      top:'28%',
-    }
+      top:'40%',
+    },
+      content:{
+        pasition: 'absolute',
+        top:'28%',
+      }
 })
