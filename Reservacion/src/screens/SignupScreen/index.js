@@ -5,7 +5,6 @@ import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
 import { styles } from './styles'
-
 import { InputText } from '../../components/InputText';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -45,35 +44,35 @@ export const SignupScreen = ({navigation}) => {
     return
   }
 
+  const signInputs = [{
+    value:username,
+    placeholder:"username",
+    placeholderTextColor:'grey',
+    style:!!username?styles.inputSelected:styles.input,
+    onChangeText:(value)=>handleChange(value,'username'),
+  },
+  {
+    value:email,
+    placeholder:"email",
+    placeholderTextColor:'grey',
+    style:!!email?styles.inputSelected:styles.input,
+    onChangeText:(value)=>handleChange(value,'email'),
+  },
+  {
+    value:password,
+    placeholder:"password",
+    placeholderTextColor:'grey',
+    style:!!password?styles.inputSelected:styles.input,
+    onChangeText:(value)=>handleChange(value,'password'),
+  }]
   return ( 
     <View style={styles.container}> 
         <TouchableOpacity onPress={() => navigation.goBack() }>
             <Icon name="angle-left" color="red" size={40}/>
         </TouchableOpacity>
   
-        <InputText
-            value={username}
-            placeholder="username"
-            placeholderTextColor={'grey'}
-            style={!!username?styles.inputSelected:styles.input}
-            onChangeText={(value)=>handleChange(value,'username')}
-        />
+        {signInputs.map((item)=><InputText key={item.placeholder} {...item}/> )}
 
-        <InputText
-            value={email}
-            placeholder="email"
-            placeholderTextColor={'grey'}
-            style={!!email?styles.inputSelected:styles.input}
-            onChangeText={(value)=>handleChange(value,'email')}
-        />
-
-        <InputText
-            value={password}
-            placeholder="password"
-            placeholderTextColor={'grey'}
-            style={!!password?styles.inputSelected:styles.input}
-            onChangeText={(value)=>handleChange(value,'password')}
-        />
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>        
         <Check value={toggleBox}  onValueChange={ (value)=>handleChange(value,'toggleBox')} text={"I agree to the Terms and Privacy Policy"}/>
         <Check value={toggleBox1}  onValueChange={ (value)=>handleChange(value,'toggleBox1')}  text={"Suscribe for select product updates."}/>
@@ -82,12 +81,7 @@ export const SignupScreen = ({navigation}) => {
             onPress={handleSingUp}
             disabled = {isAllData}
             text={"Sign Up"}/>
-          <TextTitle 
-            text={'or'} 
-            color={'grey'} 
-            fontSize={14} 
-            align={'center'}
-          />
+          
           <ButtonSecond 
             onPress={() => navigation.navigate('Login')} 
             text={"Sing Up whith Google"}

@@ -38,9 +38,6 @@ export const LoginScreen = ({navigation}) => {
   }
 
 ]
-
-
-
   return ( 
     <View style={styles.container}> 
      {inputs.map((item)=><InputText key={item.label} {...item}/> )}
