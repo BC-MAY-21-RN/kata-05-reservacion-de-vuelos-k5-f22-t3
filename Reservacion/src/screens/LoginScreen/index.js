@@ -21,22 +21,28 @@ export const LoginScreen = ({navigation}) => {
     // return
     // }
 
+  const inputs = [ {
+    value:username,
+    placeholder:"username",
+    style:!!username?styles.inputSelected:styles.input,
+    onChangeText: onChangeUsername,
+    label:"Username"
+  },
+  {
+    value:password,
+    placeholder:"password",
+    style:!!password?styles.inputSelected:styles.input,
+    onChangeText:onChangePassword,
+    label:"Password"
+  }
+
+]
+
+
+
   return ( 
     <View style={styles.container}> 
-        <InputText
-            value={username}
-            placeholder="username"
-            style={!!username?styles.inputSelected:styles.input}
-            onChangeText={onChangeUsername}
-            label="Username"
-        />
-          <InputText
-            value={password}
-            placeholder="password"
-            style={!!password?styles.inputSelected:styles.input}
-            onChangeText={onChangePassword}
-            label="Password"
-        />
+     {inputs.map((item)=><InputText key={item.label} {...item}/> )}
         <View style={styles.content}>
           <ButtonPrimary 
             onPress={() => navigation.navigate('MyFlightsScreen')}
