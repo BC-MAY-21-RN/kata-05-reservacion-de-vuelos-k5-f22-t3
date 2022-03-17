@@ -4,7 +4,7 @@ import React from 'react'
 
 export const InputText = (props) => {
 
-  const { value, placeholder,  style, onChangeText,label } = props
+  const { value, placeholder,  style, onChangeText, label, secureTextEntry } = props
 
   return (
   <>
@@ -17,6 +17,7 @@ export const InputText = (props) => {
         style={style}
         onChange={onChangeText}
         value={value}
+        secureTextEntry={secureTextEntry}
         />
     </>
   )

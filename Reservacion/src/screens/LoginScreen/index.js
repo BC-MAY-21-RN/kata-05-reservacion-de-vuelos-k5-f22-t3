@@ -33,7 +33,8 @@ export const LoginScreen = ({navigation}) => {
     placeholder:"password",
     style:!!password?styles.inputSelected:styles.input,
     onChangeText:onChangePassword,
-    label:"Password"
+    label:"Password",
+    secureTextEntry:true
   }
 
 ]
