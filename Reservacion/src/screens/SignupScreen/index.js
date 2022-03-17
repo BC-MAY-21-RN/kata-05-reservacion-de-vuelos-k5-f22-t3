@@ -64,6 +64,7 @@ export const SignupScreen = ({navigation}) => {
     placeholderTextColor:'grey',
     style:!!password?styles.inputSelected:styles.input,
     onChangeText:(value)=>handleChange(value,'password'),
+    secureTextEntry:true,
   }]
   return ( 
     <View style={styles.container}> 
