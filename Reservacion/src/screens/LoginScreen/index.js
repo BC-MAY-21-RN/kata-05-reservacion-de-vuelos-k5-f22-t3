@@ -3,7 +3,7 @@ import { View, TextInput } from 'react-native';
 import { useState } from 'react';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { styles } from './styles'
-import { TextTitle } from '../../components/TextTitle';
+
 import { InputText } from '../../components/InputText/index'
 
 export const LoginScreen = ({navigation}) => {
@@ -23,30 +23,19 @@ export const LoginScreen = ({navigation}) => {
 
   return ( 
     <View style={styles.container}> 
-        <TextTitle 
-          text={'Login'} 
-          color={'#5b6ef7'} 
-          fontSize={22} 
-          fontWeight={'bold'}
-        />
         <InputText
             value={username}
             placeholder="username"
-            placeholderTextColor={'grey'}
             style={!!username?styles.inputSelected:styles.input}
             onChangeText={onChangeUsername}
+            label="Username"
         />
-        <TextTitle 
-            text={'Password'} 
-            color={'grey'} 
-            fontSize={14} 
-        />
-        <InputText
+          <InputText
             value={password}
             placeholder="password"
-            placeholderTextColor={'grey'}
             style={!!password?styles.inputSelected:styles.input}
             onChangeText={onChangePassword}
+            label="Password"
         />
         <View style={styles.content}>
           <ButtonPrimary 

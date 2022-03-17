@@ -1,18 +1,23 @@
-import { TextInput } from 'react-native'
+import { TextInput,Text } from 'react-native'
 import React from 'react'
-import { styles } from './styles'
+
 
 export const InputText = (props) => {
 
-  const { value, placeholder, placeholderTextColor, style, onChangeText } = props
+  const { value, placeholder,  style, onChangeText,label } = props
 
   return (
-      <TextInput
+  <>
+    <Text>
+      {label}
+    </Text>
+    <TextInput
         placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
+        placeholderTextColor='grey'
         style={style}
         onChange={onChangeText}
         value={value}
-      />
+        />
+    </>
   )
 };

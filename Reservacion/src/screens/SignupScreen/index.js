@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, TextInput, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
 import { styles } from './styles'
-import { TextTitle } from '../../components/TextTitle';
+
 import { InputText } from '../../components/InputText';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export const SignupScreen = ({navigation}) => {
 
@@ -46,17 +47,10 @@ export const SignupScreen = ({navigation}) => {
 
   return ( 
     <View style={styles.container}> 
-        <TextTitle 
-          text={'Sign Up'} 
-          color={'#5b6ef7'} 
-          fontSize={22} 
-          fontWeight={'bold'}
-        /> 
-        <TextTitle 
-            text={'First Name'} 
-            color={'grey'} 
-            fontSize={14} 
-        />
+        <TouchableOpacity onPress={() => navigation.goBack() }>
+            <Icon name="angle-left" color="red" size={40}/>
+        </TouchableOpacity>
+  
         <InputText
             value={username}
             placeholder="username"
@@ -64,11 +58,7 @@ export const SignupScreen = ({navigation}) => {
             style={!!username?styles.inputSelected:styles.input}
             onChangeText={(value)=>handleChange(value,'username')}
         />
-        <TextTitle 
-            text={'Email'} 
-            color={'grey'} 
-            fontSize={14} 
-        />
+
         <InputText
             value={email}
             placeholder="email"
@@ -76,11 +66,7 @@ export const SignupScreen = ({navigation}) => {
             style={!!email?styles.inputSelected:styles.input}
             onChangeText={(value)=>handleChange(value,'email')}
         />
-        <TextTitle 
-            text={'Password'} 
-            color={'grey'} 
-            fontSize={14} 
-        />
+
         <InputText
             value={password}
             placeholder="password"
