@@ -45,26 +45,28 @@ export const SignupScreen = ({navigation}) => {
   }
 
   const signInputs = [{
+    label:'First Name',
     value:username,
     placeholder:"username",
-    placeholderTextColor:'grey',
     style:!!username?styles.inputSelected:styles.input,
     onChangeText:(value)=>handleChange(value,'username'),
   },
   {
+    label:'Email',
     value:email,
     placeholder:"email",
-    placeholderTextColor:'grey',
     style:!!email?styles.inputSelected:styles.input,
     onChangeText:(value)=>handleChange(value,'email'),
+    isRequiered:true
   },
   {
+    label:'Password',
     value:password,
     placeholder:"password",
-    placeholderTextColor:'grey',
     style:!!password?styles.inputSelected:styles.input,
     onChangeText:(value)=>handleChange(value,'password'),
     secureTextEntry:true,
+    isRequiered:true
   }]
   return ( 
     <View style={styles.container}> 
@@ -89,7 +91,7 @@ export const SignupScreen = ({navigation}) => {
           />
             <View style={styles.containerFooter}>
                 <Text style={styles.textSize}>Already have an account?</Text>
-                <TouchableOpacity  onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity  onPress={() => navigation.navigate('Login')}>
                     <Text style={{...styles.textSize,color: '#5b6ef7'}}> Login</Text>
                 </TouchableOpacity>
             </View>

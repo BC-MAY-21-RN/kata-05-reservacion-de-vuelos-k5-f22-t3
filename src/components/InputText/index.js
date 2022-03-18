@@ -4,12 +4,12 @@ import React from 'react'
 
 export const InputText = (props) => {
 
-  const { value, placeholder,  style, onChangeText, label, secureTextEntry } = props
+  const { value, placeholder,  style, onChangeText, label, secureTextEntry, isRequiered } = props
 
   return (
   <>
     <Text>
-      {label}
+      {label}{ isRequiered&&"*"}
     </Text>
     <TextInput
         placeholder={placeholder}
