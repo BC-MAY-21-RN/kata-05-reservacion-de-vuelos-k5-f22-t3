@@ -48,12 +48,7 @@ const {
   }
   return ( 
     <View style={styles.container}> 
-        <TouchableOpacity onPress={() => navigation.goBack() }>
-            <Icon name="angle-left" color="red" size={40}/>
-        </TouchableOpacity>
-  
         {signInputs.map((item)=><InputText key={item.label} {...item}/> )}
-
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>        
         <Check value={terms.value}  onValueChange={terms.onChangeText} text={"I agree to the Terms and Privacy Policy"}/>
         <Check value={subscribe.value}  onValueChange={subscribe.onChangeText}  text={"Suscribe for select product updates."}/>
@@ -62,7 +57,6 @@ const {
             onPress={handleSingUp}
             disabled={canSubmitSingUp}
             text={"Sign Up"}/>
-          
           <ButtonSecond 
             onPress={() => navigation.navigate('Login')} 
             text={"Sing Up whith Google"}

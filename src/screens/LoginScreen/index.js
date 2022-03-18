@@ -40,9 +40,6 @@ const {
   }
   return ( 
     <View style={styles.container}> 
-        <TouchableOpacity onPress={() => navigation.goBack() }>
-            <Icon name="angle-left" color="red" size={40}/>
-        </TouchableOpacity>
           {loginInputs.map((item)=><InputText key={item.label} {...item}/> )}
         <View style={styles.content}>
           <ButtonPrimary 

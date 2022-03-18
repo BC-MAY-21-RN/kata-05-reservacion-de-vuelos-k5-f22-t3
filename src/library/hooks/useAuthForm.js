@@ -1,7 +1,6 @@
 import useInput from "./useInput"
 
 const useAuthForm = () => {
-
    const [email] = useInput('')
    const [password] = useInput('')
    const [name] = useInput('')
