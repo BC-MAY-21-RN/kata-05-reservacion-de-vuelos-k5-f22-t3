@@ -30,8 +30,8 @@ const {
     label:'Password',
     placeholder:"password",
     style:!!password?styles.inputSelected:styles.input,
+    isRequiered:true,
     secureTextEntry:true,
-    isRequiered:true
   }]
 
 
@@ -45,11 +45,7 @@ const {
           <ButtonPrimary 
             onPress={handleLogin}
             disabled={canSubmitLogin}
-            text={"Sign Up"}/>
-          <ButtonSecond 
-            onPress={() => navigation.navigate('Login')} 
-            text={"Sing Up whith Google"}
-          />
+            text={"Login"}/>
             <View style={styles.containerFooter}>
                 <Text style={styles.textSize}>Don't you have an account?</Text>
                 <TouchableOpacity  onPress={() => navigation.navigate('Signup')}>
