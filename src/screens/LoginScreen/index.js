@@ -12,7 +12,7 @@ export const LoginScreen = ({navigation}) => {
 
 const {   
   email,
-  password,
+  password: passwordData,
   canSubmitLogin
 } = useAuthForm()
 
@@ -26,10 +26,10 @@ const {
     isRequiered:true
   },
   {
-    ...password,
+    ...passwordData,
     label:'Password',
     placeholder:"password",
-    style:!!password?styles.inputSelected:styles.input,
+    style:!!passwordData?styles.inputSelected:styles.input,
     isRequiered:true,
     secureTextEntry:true,
   }]
