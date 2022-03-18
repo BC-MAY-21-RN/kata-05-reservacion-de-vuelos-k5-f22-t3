@@ -1,13 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
 import { styles } from './styles'
 import { InputText } from '../../components/InputText';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import useSignUp from '../../library/hooks/useSignUp';
+import useAuthForm from '../../library/hooks/useAuthForm';
 
 export const SignupScreen = ({navigation}) => {
 
@@ -16,8 +15,9 @@ const {
   password,
   name,
   subscribe,
-  terms
-} = useSignUp()
+  terms,
+  canSubmitSingUp
+} = useAuthForm()
 
 
   const signInputs = [{
@@ -52,7 +52,7 @@ const {
             <Icon name="angle-left" color="red" size={40}/>
         </TouchableOpacity>
   
-        {signInputs.map((item)=><InputText key={item.placeholder} {...item}/> )}
+        {signInputs.map((item)=><InputText key={item.label} {...item}/> )}
 
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>        
         <Check value={terms.value}  onValueChange={terms.onChangeText} text={"I agree to the Terms and Privacy Policy"}/>
@@ -60,7 +60,7 @@ const {
         <View style={styles.content}>
           <ButtonPrimary 
             onPress={handleSingUp}
-          
+            disabled={canSubmitSingUp}
             text={"Sign Up"}/>
           
           <ButtonSecond 

@@ -1,6 +1,6 @@
 import useInput from "./useInput"
 
-const useSignUp = () => {
+const useAuthForm = () => {
 
    const [email] = useInput('')
    const [password] = useInput('')
@@ -8,13 +8,18 @@ const useSignUp = () => {
    const [subscribe] = useInput(false)
    const [terms] =useInput(false)
 
+   const canSubmitLogin = email.value&&password.value
+   const canSubmitSingUp = canSubmitLogin&&name.value&&terms.value
+
     return {
         email,
         password,
         name,
         subscribe,
-        terms
+        terms,
+        canSubmitSingUp,
+        canSubmitLogin
     }  
 }
 
-export default useSignUp
+export default useAuthForm

@@ -1,53 +1,67 @@
 import React from 'react';
-import { View, TextInput } from 'react-native';
-import { useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
+import { ButtonSecond } from '../../components/ButtonSecond/index';
+import { Check } from '../../components/Check/index';
 import { styles } from './styles'
-
-import { InputText } from '../../components/InputText/index'
+import { InputText } from '../../components/InputText';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import useAuthForm from '../../library/hooks/useAuthForm';
 
 export const LoginScreen = ({navigation}) => {
-  const [username, onChangeUsername] = useState('');
-  const [password, onChangePassword] = useState('')
-  
-    const isAllData = username&&!!password
-    // const handleLoginScreen=()=>{
-    // if(isAllData){
-    //   console.log(username,password)
-    // }   
-    // else{
-    //   console.log("some value missing not singing up")
-    // }
-    // return
-    // }
 
-  const inputs = [ {
-    value:username,
-    placeholder:"username",
-    style:!!username?styles.inputSelected:styles.input,
-    onChangeText: onChangeUsername,
-    label:"Username"
+const {   
+  email,
+  password,
+  canSubmitLogin
+} = useAuthForm()
+
+
+  const loginInputs = [
+  {
+    ...email,
+    label:'Email',
+    placeholder:"email",
+    style:!!email?styles.inputSelected:styles.input,
+    isRequiered:true
   },
   {
-    value:password,
+    ...password,
+    label:'Password',
     placeholder:"password",
     style:!!password?styles.inputSelected:styles.input,
-    onChangeText:onChangePassword,
-    label:"Password",
-    secureTextEntry:true
-  }
+    secureTextEntry:true,
+    isRequiered:true
+  }]
 
-]
+
+   const handleLogin =()=>{
+    console.log("login");
+  }
   return ( 
     <View style={styles.container}> 
-     {inputs.map((item)=><InputText key={item.label} {...item}/> )}
+        <TouchableOpacity onPress={() => navigation.goBack() }>
+            <Icon name="angle-left" color="red" size={40}/>
+        </TouchableOpacity>
+          {loginInputs.map((item)=><InputText key={item.label} {...item}/> )}
         <View style={styles.content}>
           <ButtonPrimary 
-            onPress={() => navigation.navigate('MyFlightsScreen')}
-            disabled = {isAllData}
-            text={"Login"}
+            onPress={handleLogin}
+            disabled={canSubmitLogin}
+            text={"Sign Up"}/>
+          <ButtonSecond 
+            onPress={() => navigation.navigate('Login')} 
+            text={"Sing Up whith Google"}
           />
+            <View style={styles.containerFooter}>
+                <Text style={styles.textSize}>Don't you have an account?</Text>
+                <TouchableOpacity  onPress={() => navigation.navigate('Signup')}>
+                    <Text style={{...styles.textSize,color: '#5b6ef7'}}> Signup</Text>
+                </TouchableOpacity>
+            </View>
         </View>
+
     </View>
   );
 }; 
+

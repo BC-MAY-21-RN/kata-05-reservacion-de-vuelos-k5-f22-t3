@@ -2,9 +2,7 @@ import { TextInput,Text } from 'react-native'
 import React from 'react'
 
 
-export const InputText = (props) => {
-
-  const { value, placeholder,  style, onChangeText, label, secureTextEntry, isRequiered } = props
+export const InputText = ({ value, placeholder,  style, onChangeText, label, secureTextEntry, isRequiered } ) => {
 
   return (
   <>
@@ -15,7 +13,7 @@ export const InputText = (props) => {
         placeholder={placeholder}
         placeholderTextColor='grey'
         style={style}
-        onChange={onChangeText}
+        onChangeText={onChangeText}
         value={value}
         secureTextEntry={secureTextEntry}
         />
