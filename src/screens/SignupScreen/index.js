@@ -7,67 +7,45 @@ import { Check } from '../../components/Check/index';
 import { styles } from './styles'
 import { InputText } from '../../components/InputText';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import useSignUp from '../../library/hooks/useSignUp';
 
 export const SignupScreen = ({navigation}) => {
 
-  const [loginData,setLoginData]=useState({
-    username:'',
-    email:'',
-    password:'',
-    toggleBox:'',
-    toggleBox1:'',
-  })
+const {   
+  email,
+  password,
+  name,
+  subscribe,
+  terms
+} = useSignUp()
 
-  const {
-    username,
-    email,
-    password,
-    toggleBox,
-    toggleBox1,} = loginData
-
-  const handleChange =(value, key)=>{
-    setLoginData({
-      ...loginData,
-      [key]:value
-    })
-  }
-
-  const isAllData = !!username&&!!email&&!!password&&!!toggleBox
-  const handleSingUp=()=>{
-    if(isAllData){
-
-      console.log(username,email,password, toggleBox,toggleBox1)
-    }   
-    else{
-      console.log("some value missing not singing up")
-    }
-    return
-  }
 
   const signInputs = [{
+    ...name,
     label:'First Name',
-    value:username,
     placeholder:"username",
-    style:!!username?styles.inputSelected:styles.input,
-    onChangeText:(value)=>handleChange(value,'username'),
+    style:!!name?styles.inputSelected:styles.input,
   },
   {
+    ...email,
     label:'Email',
-    value:email,
     placeholder:"email",
     style:!!email?styles.inputSelected:styles.input,
-    onChangeText:(value)=>handleChange(value,'email'),
     isRequiered:true
   },
   {
+    ...password,
     label:'Password',
-    value:password,
     placeholder:"password",
     style:!!password?styles.inputSelected:styles.input,
-    onChangeText:(value)=>handleChange(value,'password'),
     secureTextEntry:true,
     isRequiered:true
   }]
+
+
+   const handleSingUp =()=>{
+    console.log("singup");
+  }
   return ( 
     <View style={styles.container}> 
         <TouchableOpacity onPress={() => navigation.goBack() }>
@@ -77,12 +55,12 @@ export const SignupScreen = ({navigation}) => {
         {signInputs.map((item)=><InputText key={item.placeholder} {...item}/> )}
 
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>        
-        <Check value={toggleBox}  onValueChange={ (value)=>handleChange(value,'toggleBox')} text={"I agree to the Terms and Privacy Policy"}/>
-        <Check value={toggleBox1}  onValueChange={ (value)=>handleChange(value,'toggleBox1')}  text={"Suscribe for select product updates."}/>
+        <Check value={terms.value}  onValueChange={terms.onChangeText} text={"I agree to the Terms and Privacy Policy"}/>
+        <Check value={subscribe.value}  onValueChange={subscribe.onChangeText}  text={"Suscribe for select product updates."}/>
         <View style={styles.content}>
           <ButtonPrimary 
             onPress={handleSingUp}
-            disabled = {isAllData}
+          
             text={"Sign Up"}/>
           
           <ButtonSecond 
