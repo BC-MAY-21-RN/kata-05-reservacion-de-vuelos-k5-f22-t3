@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
 import { styles } from './styles'
 import { InputText } from '../../components/InputText';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import useAuthForm from '../../library/hooks/useAuthForm';
+import auth from '@react-native-firebase/auth';
 
 export const SignupScreen = ({navigation}) => {
 
@@ -46,10 +46,29 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
    
   }]
 
-
    const handleSingUp =()=>{
-    console.log("singup");
+   
+   console.log(name.value);
+   auth()
+  .createUserWithEmailAndPassword( email.value, password.value)
+  .then((resp) => {
+    console.log('User account created & signed in!',resp);
+  })
+  .catch(error => {
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
+    }
+
+    if (error.code === 'auth/invalid-email') {
+      console.log('That email address is invalid!');
+    }
+
+    console.error(error);
+  });
+   
   }
+
+
   return ( 
     <View style={styles.container}> 
         {signInputs.map((item)=>!item.hide&&<InputText key={item.label} {...item}/> )}
@@ -63,8 +82,8 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
        } 
         <View style={styles.content}>
           <ButtonPrimary 
-            onPress={handleSingUp}
-            disabled={canSubmitSingUp}
+            onPress={handleSingUp} 
+            disabled={!canSubmitSingUp}
             text={isLoginScreen?"Login":"Sign Up"}/>
           <ButtonSecond 
             onPress={() => navigation.navigate('Login')} 

@@ -1,4 +1,10 @@
 import useInput from "./useInput"
+const regexEmail = /\S+@\S+\.\S+/
+
+const isValidEmail=(email)=>{
+    console.log("reach",email)
+    return regexEmail.test(email) 
+}
 
 const useAuthForm = () => {
    const [email] = useInput('')
@@ -7,7 +13,9 @@ const useAuthForm = () => {
    const [subscribe] = useInput(false)
    const [terms] =useInput(false)
 
-   const canSubmitLogin = email.value&&password.value
+  console.log("email",isValidEmail(email.value))
+
+   const canSubmitLogin = isValidEmail(email.value)&&password.value
    const canSubmitSingUp = canSubmitLogin&&name.value&&terms.value
 
     return {
