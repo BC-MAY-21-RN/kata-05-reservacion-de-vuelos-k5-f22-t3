@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "322851831562",
+    "project_id": "reservacion-de-vuelos-ffb5e",
+    "storage_bucket": "reservacion-de-vuelos-ffb5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322851831562:android:37af70ec0190544d42c4f3",
+        "android_client_info": {
+          "package_name": "com.reservacion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322851831562-1r23d7um7j151au796octv4kab6437kt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdAHe7vW8oE4565PLMZcM6zTNa8qvYtcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322851831562-1r23d7um7j151au796octv4kab6437kt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

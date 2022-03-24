@@ -9,7 +9,7 @@ export const ButtonPrimary = (props) => {
     return (
             <TouchableOpacity onPress={onPress}
             disabled={disabled}
-                style={disabled ? styles.containerTouch : styles.containerTouchD}>
+                style={disabled ?  styles.containerTouchD:styles.containerTouch }>
                 <Text style={styles.text}>
                     {text}
                 </Text>
