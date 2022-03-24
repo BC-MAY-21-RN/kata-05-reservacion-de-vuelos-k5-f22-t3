@@ -23,7 +23,7 @@ const useAuthForm = () => {
    const [terms] = useInput(false)
 
    const canSubmitLogin = isValidEmail(email.value)&&isValidPassword(password.value)
-   const canSubmitSingUp = canSubmitLogin&&isValidName(name.value)&terms.value
+   const canSubmitSingUp = canSubmitLogin && isValidName(name.value) && terms.value
 
     return {
         email,

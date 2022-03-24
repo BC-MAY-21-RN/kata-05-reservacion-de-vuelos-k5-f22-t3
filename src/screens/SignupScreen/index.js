@@ -16,25 +16,27 @@ const {
   name,
   subscribe,
   terms,
-  canSubmitSingUp
+  canSubmitSingUp,
+  canSubmitLogin
 } = useAuthForm()
 
-const [isLoginScreen, setIsLoginScreen] = useState(false)
+  const [isLoginScreen, setIsLoginScreen] = useState(false)
+  const [isValidEmail, setIsValidEmail] = useState(true)
 
   const signInputs = [{
     ...name,
     label:'First Name',
     placeholder:"username",
     style:!!name?styles.inputSelected:styles.input,
-    hide:isLoginScreen
+    hide:isLoginScreen,
   },
   {
     ...email,
     label:'Email',
     placeholder:"email",
     style:!!email?styles.inputSelected:styles.input,
-    isRequiered:true,
-    
+    isRequiered: true, 
+    validEmail:isValidEmail,  
   },
   {
     ...password,
@@ -43,41 +45,49 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
     style:!!password?styles.inputSelected:styles.input,
     secureTextEntry:true,
     isRequiered:true,
-   
   }]
 
    const handleSingUp =()=>{
-   
-   console.log(name.value);
    auth()
-  .createUserWithEmailAndPassword( email.value, password.value)
+  .createUserWithEmailAndPassword(email.value, password.value)
   .then((resp) => {
     console.log('User account created & signed in!',resp);
   })
   .catch(error => {
     if (error.code === 'auth/email-already-in-use') {
-      console.log('That email address is already in use!');
+      console.log('That email address is already in use!');   
+      setIsValidEmail(false)
     }
-
     if (error.code === 'auth/invalid-email') {
       console.log('That email address is invalid!');
     }
-
     console.error(error);
   });
-   
   }
-
 
   return ( 
     <View style={styles.container}> 
-        {signInputs.map((item)=>!item.hide&&<InputText key={item.label} {...item}/> )}
-       {
+      {signInputs.map((item) => !item.hide && <InputText key={item.label} {...item} />)}
+       {    
         !isLoginScreen&&
        <>
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>        
         <Check value={terms.value}  onValueChange={terms.onChangeText} text={"I agree to the Terms and Privacy Policy"}/>
-        <Check value={subscribe.value}  onValueChange={subscribe.onChangeText}  text={"Suscribe for select product updates."}/>
+        <Check value={subscribe.value} onValueChange={subscribe.onChangeText} text={"Suscribe for select product updates."} />
+        {!isValidEmail&& 
+        <>
+          <Text>
+            Email in use. Use a different email
+          </Text>
+        </>
+        }
+        {!canSubmitLogin&& 
+        <>
+          <Text>
+            Incorrect email and/or password
+          </Text>
+        </>
+        }
        </>
        } 
         <View style={styles.content}>
@@ -96,7 +106,6 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
                 </TouchableOpacity>
             </View>
         </View>
-
     </View>
   );
 }; 
