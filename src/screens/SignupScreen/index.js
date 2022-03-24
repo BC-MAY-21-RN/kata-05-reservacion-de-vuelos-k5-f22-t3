@@ -7,6 +7,7 @@ import { styles } from './styles'
 import { InputText } from '../../components/InputText';
 import useAuthForm from '../../library/hooks/useAuthForm';
 import auth from '@react-native-firebase/auth';
+import AnimatedLoader from "react-native-animated-loader";
 
 export const SignupScreen = ({navigation}) => {
 
@@ -22,6 +23,7 @@ const {
 
   const [isLoginScreen, setIsLoginScreen] = useState(false)
   const [isValidEmail, setIsValidEmail] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   const signInputs = [{
     ...name,
@@ -47,11 +49,12 @@ const {
     isRequiered:true,
   }]
 
-   const handleSingUp =()=>{
-   auth()
+  const handleSingUp =()=>{
+  auth()
   .createUserWithEmailAndPassword(email.value, password.value)
   .then((resp) => {
-    console.log('User account created & signed in!',resp);
+    console.log('User account created & signed in!', resp);
+    setVisible(true)
   })
   .catch(error => {
     if (error.code === 'auth/email-already-in-use') {
@@ -104,9 +107,17 @@ const {
                 <TouchableOpacity  onPress={() => setIsLoginScreen(!isLoginScreen)}>
                     <Text style={{...styles.textSize,color: '#5b6ef7'}}> {isLoginScreen?'Signup': 'Login'}</Text>
                 </TouchableOpacity>
-            </View>
         </View>
+      </View>
+      <AnimatedLoader
+        visible={visible}
+        overlayColor="rgba(255,255,255,0.75)"
+        source={require("../../assets/lf30_editor_8jfivmsk.json")}
+        animationStyle={styles.lottie}
+        speed={1}
+      >
+        <Text>Signing up...</Text>
+      </AnimatedLoader>
     </View>
   );
 }; 
-
