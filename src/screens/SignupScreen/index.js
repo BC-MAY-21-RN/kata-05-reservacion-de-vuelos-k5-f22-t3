@@ -82,7 +82,7 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
        } 
         <View style={styles.content}>
           <ButtonPrimary 
-            onPress={handleSingUp} 
+            onPress={(handleSingUp) => navigation.navigate('Myflights')} 
             disabled={!canSubmitSingUp}
             text={isLoginScreen?"Login":"Sign Up"}/>
           <ButtonSecond 
