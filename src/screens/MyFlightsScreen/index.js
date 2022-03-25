@@ -4,7 +4,7 @@ import { InfoReservation } from '../../components/InfoReservation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { styles } from './styles';
 
-export const MyFlightsSreen = ({navigation}) => {
+export const MyFlightsScreen = ({navigation}) => {
   return (
     <View>
       <Text>Myflights</Text>
