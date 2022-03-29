@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
 import { styles } from './styles'
 import { InputText } from '../../components/InputText';
 import useAuthForm from '../../library/hooks/useAuthForm';
-import auth from '@react-native-firebase/auth';
+import auth, { signInWithEmailAndPassword } from '@react-native-firebase/auth';
 
 export const SignupScreen = ({navigation}) => {
 
@@ -46,7 +46,7 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
    
   }]
 
-   const handleSingUp =()=>{
+  const handleSingUp =()=>{
    
    console.log(name.value);
    auth()
@@ -65,9 +65,17 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
 
     console.error(error);
   });
-   
+  /*signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('Signed in!')
+        const user = userCredential.user;
+        console.log(user)
+        navigation.navigate('Home');
+      })
+      .catch(error => {
+        console.log(error)
+      })*/
   }
-
 
   return ( 
     <View style={styles.container}> 
@@ -96,7 +104,6 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
                 </TouchableOpacity>
             </View>
         </View>
-
     </View>
   );
 }; 
