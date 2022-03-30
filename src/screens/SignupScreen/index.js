@@ -6,7 +6,7 @@ import { Check } from '../../components/Check/index';
 import { styles } from './styles';
 import { InputText } from '../../components/InputText';
 import useAuthForm from '../../library/hooks/useAuthForm';
-import auth from '@react-native-firebase/auth';
+import auth, { signInWithEmailAndPassword } from '@react-native-firebase/auth';
 
 export const SignupScreen = ({navigation}) => {
 
@@ -49,7 +49,6 @@ export const SignupScreen = ({navigation}) => {
 
    const handleSingUp = () =>{
    
-   console.log(name.value);
    auth()
   .createUserWithEmailAndPassword( email.value, password.value)
   .then((resp) => {
@@ -67,9 +66,17 @@ export const SignupScreen = ({navigation}) => {
 
     console.error(error);
   });
-   
+  /*signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('Signed in!')
+        const user = userCredential.user;
+        console.log(user)
+        navigation.navigate('Home');
+      })
+      .catch(error => {
+        console.log(error)
+      })*/
   }
-
 
   return ( 
     <View style={styles.container}> 
@@ -98,7 +105,6 @@ export const SignupScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
         </View>
-
     </View>
   );
 }; 
