@@ -1,25 +1,26 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
-import { styles } from './styles'
+import { styles } from './styles';
 import { InputText } from '../../components/InputText';
 import useAuthForm from '../../library/hooks/useAuthForm';
 import auth from '@react-native-firebase/auth';
 
 export const SignupScreen = ({navigation}) => {
 
-const {   
-  email,
-  password,
-  name,
-  subscribe,
-  terms,
-  canSubmitSingUp
-} = useAuthForm()
 
-const [isLoginScreen, setIsLoginScreen] = useState(false)
+  const {   
+    email,
+    password,
+    name,
+    subscribe,
+    terms,
+    canSubmitSingUp
+  } = useAuthForm()
+
+  const [isLoginScreen, setIsLoginScreen] = useState(false)
 
   const signInputs = [{
     ...name,
@@ -46,13 +47,14 @@ const [isLoginScreen, setIsLoginScreen] = useState(false)
    
   }]
 
-   const handleSingUp =()=>{
+   const handleSingUp = () =>{
    
    console.log(name.value);
    auth()
   .createUserWithEmailAndPassword( email.value, password.value)
   .then((resp) => {
     console.log('User account created & signed in!',resp);
+    navigation.navigate('Myflights')
   })
   .catch(error => {
     if (error.code === 'auth/email-already-in-use') {
