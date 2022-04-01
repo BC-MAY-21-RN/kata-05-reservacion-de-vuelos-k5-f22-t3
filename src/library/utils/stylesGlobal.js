@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+
 export const styles = StyleSheet.create({
     container:{
       backgroundColor: 'white',
@@ -10,8 +11,8 @@ export const styles = StyleSheet.create({
       pasition: 'absolute',
       top:'40%',
     },
-      content:{
-        pasition: 'absolute',
-        top:'28%',
-      }
+    content:{
+      pasition: 'absolute',
+      top:'28%',
+    }
 })
