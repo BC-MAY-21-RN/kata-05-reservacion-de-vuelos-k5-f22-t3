@@ -1,10 +1,9 @@
-import { Calendar, LocaleConfig, CalendarProps } from "react-native-calendars";
-import React, { useEffect , useState, useCallback, useMemo,Fragment} from "react";
-import {StyleSheet, View, ScrollView, Text, TouchableOpacity, } from 'react-native';
+import { Calendar } from "react-native-calendars";
+import React, {  useState, useCallback, useMemo,Fragment} from "react";
+import {StyleSheet, Text } from 'react-native';
+
 
 export const FlightsCalendar = () => {
-
-
 
     const INITIAL_DATE = '2020-02-02';
     const [selected, setSelected] = useState(INITIAL_DATE);
@@ -26,7 +25,6 @@ export const FlightsCalendar = () => {
         <Fragment>
             <Text style={styles.text}>Calendar with selectable date</Text>
             <Calendar
-
                 enableSwipeMonths
                 current={INITIAL_DATE}
                 style={styles.calendar}

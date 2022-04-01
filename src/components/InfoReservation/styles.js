@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     },
     line: {
       flexDirection: 'column',
-      borderBottomColor: 'gray',
+      borderBottomColor: '#e2e2e2',
       borderBottomWidth: 1,
       marginTop: 4,
       marginBottom: 6,

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { ButtonSecond } from '../../components/ButtonSecond/index';
 import { Check } from '../../components/Check/index';
 import { styles } from './styles';
 import { InputText } from '../../components/InputText';
 import useAuthForm from '../../library/hooks/useAuthForm';
-import auth, { signInWithEmailAndPassword } from '@react-native-firebase/auth';
+import { signIn, signUp } from '../../library/utils/auth'
+
 
 export const SignupScreen = ({navigation}) => {
 
@@ -17,7 +18,8 @@ export const SignupScreen = ({navigation}) => {
     name,
     subscribe,
     terms,
-    canSubmitSingUp
+    canSubmitSingUp,
+    canSubmitLogin,
   } = useAuthForm()
 
   const [isLoginScreen, setIsLoginScreen] = useState(false)
@@ -47,36 +49,16 @@ export const SignupScreen = ({navigation}) => {
    
   }]
 
-   const handleSingUp = () =>{
-   
-   auth()
-  .createUserWithEmailAndPassword( email.value, password.value)
-  .then((resp) => {
-    console.log('User account created & signed in!',resp);
-    navigation.navigate('Myflights')
-  })
-  .catch(error => {
-    if (error.code === 'auth/email-already-in-use') {
-      console.log('That email address is already in use!');
-    }
-
-    if (error.code === 'auth/invalid-email') {
-      console.log('That email address is invalid!');
-    }
-
-    console.error(error);
-  });
-  /*signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log('Signed in!')
-        const user = userCredential.user;
-        console.log(user)
-        navigation.navigate('Home');
-      })
-      .catch(error => {
-        console.log(error)
-      })*/
+  const handleSingUp = () =>{
+    signUp(email.value, password.value);
   }
+
+  const handleLogin = () => {
+    if (email != '' && password != '') {
+      signIn(email.value, password.value);
+    }
+  }
+
 
   return ( 
     <View style={styles.container}> 
@@ -91,8 +73,8 @@ export const SignupScreen = ({navigation}) => {
        } 
         <View style={styles.content}>
           <ButtonPrimary 
-            onPress={handleSingUp} 
-            disabled={!canSubmitSingUp}
+            onPress={isLoginScreen?handleLogin:handleSingUp} 
+            disabled={isLoginScreen?!canSubmitLogin:!canSubmitSingUp}
             text={isLoginScreen?"Login":"Sign Up"}/>
           <ButtonSecond 
             onPress={() => navigation.navigate('Login')} 
