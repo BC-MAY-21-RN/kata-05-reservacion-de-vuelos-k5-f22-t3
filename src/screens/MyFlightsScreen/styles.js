@@ -1,10 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-    containerButton:{
+    containerButton:{ 
+        backgroundColor: "#6170f7",
+        padding: 15,
+        paddingHorizontal: 17,
+        borderRadius: 45,
         position: 'absolute', 
-        flexDirection: 'row',
-        marginVertical: '100%',
-        marginHorizontal: '45%'
+        bottom:'5%',
+        right:'50%',
     },
 })
