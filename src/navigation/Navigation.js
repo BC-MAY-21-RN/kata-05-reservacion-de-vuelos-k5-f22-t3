@@ -8,6 +8,7 @@ import { CalendarScreen } from '../screens/CalendarScreen/index';
 import { OriginScreen } from '../screens/OriginScreen/index';
 import { DestinyScreen } from '../screens/DestinyScreen/index';
 import { PassengersScreen } from '../screens/PassengersScreen/index';
+import { FinalScreen } from '../screens/FinalScreen/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,11 +18,12 @@ export const Navigation = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {!currentUser?<Stack.Screen name="Signup" component={SignupScreen} />:
       <>
+      <Stack.Screen name="Myflights" component={MyFlightsScreen} />
       <Stack.Screen name="Origin" component={OriginScreen} />
       <Stack.Screen name="Destiny" component={DestinyScreen} />
       <Stack.Screen name="CalendarFlights" component={CalendarScreen} />
       <Stack.Screen name="Passengers" component={PassengersScreen} />
-      <Stack.Screen name="Myflights" component={MyFlightsScreen} />
+      <Stack.Screen name="Final" component={FinalScreen} />
       {/*<Stack.Screen name="Booking" component={BookingScreen} />*/}
       </>}
     </Stack.Navigator>

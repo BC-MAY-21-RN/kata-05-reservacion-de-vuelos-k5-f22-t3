@@ -4,8 +4,9 @@ import { ButtonPrimary } from '../../components/ButtonPrimary/index';
 import { ContainerView } from '../../library/utils/styledGlobal';
 import { Calendar } from 'react-native-calendars';
 
-export const CalendarScreen = ({navigation}) => {
-    
+export const CalendarScreen = ({navigation, route}) => {
+    const { beg, ams } = route.params;
+
     const INITIAL_DATE = '2020-02-02';
     const [selected, setSelected] = useState(INITIAL_DATE);
   
@@ -40,7 +41,11 @@ export const CalendarScreen = ({navigation}) => {
                 // Pass and merge params back to home screen
                 navigation.navigate({
                 name: 'Passengers',
-                params: { selected: selected },
+                params: { 
+                    beg : beg,
+                    ams : ams,
+                    selected: selected,
+                },
                 merge: true,
                 });
             }}/>

@@ -19,7 +19,7 @@ export const MyFlightsScreen = ({navigation}) => {
   const getAllBookings = async () => {
     setRefreshing(true);
     
-    const bookings = await getBookings('andres@gmail.com');
+    const bookings = await getBookings(auth()._user.email);
     // Transform data
     let tempBookings = [];
     await bookings.docs.forEach(async booking => {
@@ -72,7 +72,7 @@ export const MyFlightsScreen = ({navigation}) => {
           name="plus" 
           size={30}
           color="white" 
-          onPress={() => navigation.navigate('Booking')} 
+          onPress={() => navigation.navigate('Origin')} 
         /> 
       </TouchableOpacity>
     </ContainerView>

@@ -43,7 +43,10 @@ export const DestinyScreen = ({navigation, route}) => {
               // Pass and merge params back to home screen
               navigation.navigate({
                 name: 'CalendarFlights',
-                params: { ams: ams },
+                params: { 
+                    beg : beg,
+                    ams: ams 
+                },
                 merge: true,
               });
               }}/>

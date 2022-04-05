@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { FlatList, TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { ContainerView } from '../../library/utils/styledGlobal';
+import { ButtonPrimary } from '../../components/ButtonPrimary';
 import { styles } from './styles';
 
-export const PassengersScreen = ({navegation}) => {
+export const PassengersScreen = ({navigation, route}) => {
+    const { beg, ams, selected } = route.params;
     const DATA = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const [numberPassengers, setNumberPassengers] = useState(1);
+    const [passengers, setPassengers] = useState(1);
 
     const renderItem = ({ item }) => (
             <TouchableOpacity
-                onPress={() => {setNumberPassengers(item)}}
+                onPress={() => {setPassengers(item)}}
             >
                 
-                {numberPassengers===item?
+                {passengers===item?
                  <View style={styles.container}>
+                      
                      <Icon name="caret-right" size={30} color={"#5b6ef7"}
                      style={{paddingLeft:100}}/>
                      <Text style={styles.numberSelect}>{item}</Text>
@@ -28,13 +32,33 @@ export const PassengersScreen = ({navegation}) => {
         );
   
     return (
-        <View style={styles.containerPiker}>
-            <FlatList
-            data={DATA}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-            initialNumToRender={3}
-            />
-        </View>
+        <ContainerView>
+            <Text style={styles}>How many passengers</Text>
+            <View style={styles.containerPiker}>
+                <FlatList
+                data={DATA}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+                initialNumToRender={3}
+                />
+            </View>
+            <View style={styles.containerButton}>
+                <ButtonPrimary
+                    text={"Next"}
+                    onPress={() => {
+                    // Pass and merge params back to home screen
+                    navigation.navigate({
+                        name: 'Final',
+                        params: { 
+                            beg : beg,
+                            ams : ams,
+                            selected : selected,
+                            passengers : passengers 
+                        },
+                        merge: true,
+                    });
+                }}/>
+            </View>
+        </ContainerView>
   )
 }
