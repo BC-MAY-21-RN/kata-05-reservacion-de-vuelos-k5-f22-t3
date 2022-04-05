@@ -23,7 +23,7 @@ export const FlightsCalendar = () => {
     }, [selected]);
     return (
         <Fragment>
-            <Text style={styles.text}>Calendar with selectable date</Text>
+            <Text style={styles}>Select date</Text>
             <Calendar
                 enableSwipeMonths
                 current={INITIAL_DATE}
@@ -39,9 +39,16 @@ export const FlightsCalendar = () => {
 
 
 const styles = StyleSheet.create({
+    
     calendar: {
         marginBottom: 10
         
 
     },
+
+    text:{
+        fontWeight: 'bold',
+        
+
+    }
 })
