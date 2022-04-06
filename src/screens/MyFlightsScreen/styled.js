@@ -7,8 +7,4 @@ export const HeaderView = styled.View`
     margin-bottom: 20px;
 `
 
-export const TitleText = styled.Text`
-    color:#6170f7;
-    font-size:30;
-    font-weight: bold;
-`
+

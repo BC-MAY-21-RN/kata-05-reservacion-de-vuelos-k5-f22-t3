@@ -1,7 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MyFlightsScreen } from '../screens/MyFlightsScreen/index';
-import { BookingScreen } from '../screens/BookingScreen/index';
 import { SignupScreen } from '../screens/SignupScreen/index';
 import { infoUser } from '../library/utils/auth';
 import { CalendarScreen } from '../screens/CalendarScreen/index';
@@ -24,7 +23,6 @@ export const Navigation = () => {
       <Stack.Screen name="CalendarFlights" component={CalendarScreen} />
       <Stack.Screen name="Passengers" component={PassengersScreen} />
       <Stack.Screen name="Final" component={FinalScreen} />
-      {/*<Stack.Screen name="Booking" component={BookingScreen} />*/}
       </>}
     </Stack.Navigator>
   );

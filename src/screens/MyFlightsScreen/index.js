@@ -6,8 +6,8 @@ import { InfoReservation } from '../../components/InfoReservation';
 import { getBookings } from '../../library/utils/database';
 import auth from '@react-native-firebase/auth';
 import { styles } from './styles';
-import { ContainerView } from '../../library/utils/styledGlobal';
-import { HeaderView, TitleText } from './styled'
+import { ContainerView ,TitleText} from '../../library/utils/styledGlobal';
+import { HeaderView } from './styled'
 
 export const MyFlightsScreen = ({navigation}) => {
   const [allBookings, setAllBookings] = useState([])
