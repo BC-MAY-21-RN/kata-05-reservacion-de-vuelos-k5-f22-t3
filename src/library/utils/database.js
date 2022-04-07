@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 
-export const createBooking = (userEmail, currentBookingId, beg, ams, date, passengers) => {
+export const createBooking = ({userEmail, currentBookingId, beg, ams, date, passengers}) => {
   return firestore().collection('Flights')
   .doc(currentBookingId)
   .set({
@@ -10,7 +10,7 @@ export const createBooking = (userEmail, currentBookingId, beg, ams, date, passe
     date, 
     passengers
   });
-};
+}; 
 
 export const getBookings = (email) => {
   return firestore()

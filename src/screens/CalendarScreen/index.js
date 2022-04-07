@@ -33,14 +33,14 @@ export const CalendarScreen = ({navigation, route}) => {
             onDayPress={onDayPress}
             markedDates={marked}
         />
-        <View style={styles.containerButton}>
+        <View>
             <ButtonPrimary
                 text={"Next"}
                 onPress={() => {
                 // Pass and merge params back to home screen
                 navigation.navigate({
                 name: 'Passengers',
-                params: { beg : beg, ams : ams, selected: selected },
+                params: { beg : beg, ams : ams, selected: selected,},
                 merge: true,
                 });
             }}/>

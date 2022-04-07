@@ -22,7 +22,7 @@ export const OriginScreen = ({navigation}) => {
           value={beg}
         />  
         
-        <View style={styles.containerButton}>
+        <View>
             <ButtonPrimary
                 text={"Next"}
                 onPress={() => {
