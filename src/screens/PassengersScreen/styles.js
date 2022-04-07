@@ -10,7 +10,6 @@ export const StyledView = styled.View`
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-
   containerPiker:{
     flexDirection: 'row',
     height: 120,

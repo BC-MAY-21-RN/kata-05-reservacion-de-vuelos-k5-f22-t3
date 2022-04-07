@@ -11,13 +11,9 @@ export const PassengersScreen = ({navigation, route}) => {
     const [passengers, setPassengers] = useState(1);
 
     const renderItem = ({ item }) => (
-            <TouchableOpacity
-                onPress={() => {setPassengers(item)}}
-            >
-                
+            <TouchableOpacity onPress={() => {setPassengers(item)}}>
                 {passengers===item?
-                 <View style={styles.container}>
-                      
+                 <View style={styles.container}>      
                      <Icon name="caret-right" size={30} color={"#5b6ef7"}
                      style={{paddingLeft:100}}/>
                      <Text style={styles.numberSelect}>{item}</Text>
@@ -27,8 +23,7 @@ export const PassengersScreen = ({navigation, route}) => {
                  :
                  <Text style={styles.numberDisable}>{item}</Text>
                  }
-             </TouchableOpacity>
-                 
+             </TouchableOpacity>           
         );
   
     return (
@@ -46,15 +41,9 @@ export const PassengersScreen = ({navigation, route}) => {
                 <ButtonPrimary
                     text={"Next"}
                     onPress={() => {
-                    // Pass and merge params back to home screen
                     navigation.navigate({
                         name: 'Final',
-                        params: { 
-                            beg : beg,
-                            ams : ams,
-                            selected : selected,
-                            passengers : passengers 
-                        },
+                        params: { beg : beg, ams : ams, selected : selected, passengers : passengers },
                         merge: true,
                     });
                 }}/>

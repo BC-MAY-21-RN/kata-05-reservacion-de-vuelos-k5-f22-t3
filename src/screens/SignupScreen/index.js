@@ -10,8 +10,6 @@ import { signIn, signUp } from '../../library/utils/auth'
 import {TitleText} from '../../library/utils/styledGlobal';
 
 export const SignupScreen = ({navigation}) => {
-
-
   const {   
     email,
     password,
@@ -61,8 +59,7 @@ export const SignupScreen = ({navigation}) => {
 
 
   return ( 
-    <View style={styles.container}> 
-        
+    <View style={styles.container}>        
         <TitleText > {isLoginScreen? 'Login' : 'Sign Up'} </TitleText>  
         {signInputs.map((item)=>!item.hide&&<InputText key={item.label} {...item}/> )}
        {

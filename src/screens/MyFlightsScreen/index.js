@@ -1,7 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import { TouchableOpacity, FlatList, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { infoUser, signOut } from '../../library/utils/auth';
+import { signOut } from '../../library/utils/auth';
 import { InfoReservation } from '../../components/InfoReservation';
 import { getBookings } from '../../library/utils/database';
 import auth from '@react-native-firebase/auth';
