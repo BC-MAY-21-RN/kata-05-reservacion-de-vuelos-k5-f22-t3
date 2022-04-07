@@ -31,9 +31,5 @@ export const styles = StyleSheet.create({
     },
     textSize:{
         fontSize: 16,
-    },
-      lottie: {
-      width: 100,
-      height: 100
     }
 })
