@@ -15,23 +15,9 @@ export const OriginScreen = ({navigation}) => {
         <View style={styles.containerText}> 
           <TitleText>Where are you now?</TitleText>
         </View>
-        <TextInput
-          style={styles.whereLine}
-          placeholder="Select location"
-          onChangeText={setBeg}
-          value={beg}
-        />  
-        
+        <TextInput style={styles.whereLine} placeholder="Select location" onChangeText={setBeg} value={beg} />    
         <View>
-            <ButtonPrimary
-                text={"Next"}
-                onPress={() => {
-                navigation.navigate({
-                    name: 'Destiny',
-                    params: { beg: beg },
-                    merge: true,
-                });
-            }}/>
+          <ButtonPrimary text={"Next"} onPress={() => { navigation.navigate({ name: 'Destiny', params: { beg: beg }, merge: true,}); }}/>
         </View>
     </ContainerView>
   )

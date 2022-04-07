@@ -1,4 +1,4 @@
-import { StyleSheet, View, TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
 import React, {useState} from 'react';
 import { ContainerView } from '../../library/utils/styledGlobal';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -12,32 +12,14 @@ export const DestinyScreen = ({navigation, route}) => {
 
   return (
     <ContainerView>
-      <Icon 
-        name="angle-left" 
-        size={25} 
-        color="#5b6ef7"
-        onPress={() => navigation.goBack()}  
-      />
+      <Icon name="angle-left"  size={25} color="#5b6ef7" onPress={() => navigation.goBack()} />
       <View style={styles.containerText}> 
         <TitleText>Where will you be flying to?</TitleText>
       </View>
-      <TextInput
-        style={styles.whereLine}
-        placeholder="Select location"
-            onChangeText={setAms}
-            value={ams}
-          />
+      <TextInput style={styles.whereLine} placeholder="Select location" onChangeText={setAms} value={ams}/>
       <View style={styles.containerButton}>
-        <ButtonPrimary
-            text={"Next"}
-            onPress={() => {
-            navigation.navigate({
-            name: 'CalendarFlights',
-            params: { beg : beg, ams: ams },
-            merge: true,
-          });
-          }}/>
-        </View>
+        <ButtonPrimary text={"Next"} onPress={() => { navigation.navigate({ name: 'CalendarFlights', params: { beg : beg, ams: ams },  merge: true,}); }}/>
+      </View>
     </ContainerView>
     )
   }

@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import {InfoReservation} from '../../components/InfoReservation';
 import auth from '@react-native-firebase/auth';
@@ -7,22 +7,12 @@ import {createBooking} from '../../library/utils/database';
 
 export const FinalScreen = ({navigation, route}) => {
   const {beg, ams, selected, passengers} = route.params;
-
   const handleBookingSave = async () => {
     const currentBookingId = Math.floor(
       100000 + Math.random() * 9000,
     ).toString();
-
-    await createBooking({
-      userEmail: auth()._user.email,
-      currentBookingId: currentBookingId,
-      beg,
-      ams,
-      date: selected,
-      passengers,
-    });
+    await createBooking({userEmail: auth()._user.email, currentBookingId: currentBookingId, beg, ams, date: selected, passengers,});
     navigation.navigate('Myflights');
-
     ToastAndroid.show('Booking Saved', ToastAndroid.SHORT);
   };
   return (
@@ -37,5 +27,3 @@ export const FinalScreen = ({navigation, route}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({});
