@@ -8,11 +8,19 @@ import { OriginScreen } from '../screens/OriginScreen/index';
 import { DestinyScreen } from '../screens/DestinyScreen/index';
 import { PassengersScreen } from '../screens/PassengersScreen/index';
 import { FinalScreen } from '../screens/FinalScreen/index';
+import { GoogleSignin } from '@react-native-community/google-signin';
 
 const Stack = createNativeStackNavigator();
 
 export const Navigation = () => {
   const currentUser = infoUser() 
+   //useEffect(() => {
+     // initialize the Google SDK
+     //GoogleSignin.configure({
+     //webClientId: '322851831562-.apps.googleusercontent.com',
+   // });
+   //  }) 
+
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {!currentUser?<Stack.Screen name="Signup" component={SignupScreen} />:

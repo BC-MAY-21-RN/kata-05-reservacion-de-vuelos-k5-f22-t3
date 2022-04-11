@@ -8,6 +8,7 @@ import { InputText } from '../../components/InputText';
 import useAuthForm from '../../library/hooks/useAuthForm';
 import { signIn, signUp } from '../../library/utils/auth'
 import {TitleText} from '../../library/utils/styledGlobal';
+import { AuthContext } from '../../navigation/AuthProvider';
 
 export const SignupScreen = ({navigation}) => {
   const {   
@@ -22,6 +23,8 @@ export const SignupScreen = ({navigation}) => {
 
   const [isLoginScreen, setIsLoginScreen] = useState(false)
 
+  // const {login, googleLogin} = useContext(AuthContext);
+
   const signInputs = [{
     ...name,
     label:'First Name',
@@ -29,6 +32,7 @@ export const SignupScreen = ({navigation}) => {
     style:!!name?styles.inputSelected:styles.input,
     hide:isLoginScreen
   },
+
   {
     ...email,
     label:'Email',
@@ -76,8 +80,12 @@ export const SignupScreen = ({navigation}) => {
             disabled={isLoginScreen?!canSubmitLogin:!canSubmitSingUp}
             text={isLoginScreen?"Login":"Sign Up"}/>
           <ButtonSecond 
-            onPress={() => navigation.navigate('Login')} 
+            onPress={() => googleLogin()}
             text={`${isLoginScreen?'Login ':"Sing Up "}with Google`}
+            //  buttonTitle="Sign In with Google"
+            //  btnType="google"
+            //  color="#de4d41"
+            // backgroundColor="#f5e7ea"
           />
             <View style={styles.containerFooter}>
                 <Text style={styles.textSize}>{isLoginScreen?`Don't you have an account?`:'Already have an account?'}</Text>
