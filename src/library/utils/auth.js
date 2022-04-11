@@ -13,7 +13,7 @@ export const signIn = (email, password) => {
       });
 };
   
-export const signUp = (email, password) => {
+export const signUp = (email, password, setIsValidEmail) => {
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
@@ -22,6 +22,7 @@ export const signUp = (email, password) => {
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
           console.log('That email address is already in use!');
+          setIsValidEmail(false)
         }
     
         if (error.code === 'auth/invalid-email') {

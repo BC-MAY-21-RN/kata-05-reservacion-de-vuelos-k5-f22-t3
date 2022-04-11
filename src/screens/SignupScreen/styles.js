@@ -31,5 +31,21 @@ export const styles = StyleSheet.create({
     },
     textSize:{
         fontSize: 16,
-    }
+    },
+    lottie: {
+      width: 100,
+      height: 100,
+  },
+  incorrectText: {
+    color: 'red',
+    position: 'absolute',
+    marginTop: 193,
+    marginLeft: 90,
+  },
+  differentEmail: {
+    color: 'red',
+    position: 'absolute',
+    marginTop: 125,
+    marginLeft: 65,
+  }
 })

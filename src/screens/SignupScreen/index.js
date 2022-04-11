@@ -7,7 +7,8 @@ import { styles } from './styles';
 import { InputText } from '../../components/InputText';
 import useAuthForm from '../../library/hooks/useAuthForm';
 import { signIn, signUp } from '../../library/utils/auth'
-import {TitleText} from '../../library/utils/styledGlobal';
+import { TitleText } from '../../library/utils/styledGlobal';
+import AnimatedLoader from "react-native-animated-loader";
 
 export const SignupScreen = ({navigation}) => {
   const {   
@@ -17,17 +18,19 @@ export const SignupScreen = ({navigation}) => {
     subscribe,
     terms,
     canSubmitSingUp,
-    canSubmitLogin,
+    canSubmitLogin
   } = useAuthForm()
 
   const [isLoginScreen, setIsLoginScreen] = useState(false)
+  const [isValidEmail, setIsValidEmail] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   const signInputs = [{
     ...name,
     label:'First Name',
     placeholder:"username",
     style:!!name?styles.inputSelected:styles.input,
-    hide:isLoginScreen
+    hide:isLoginScreen,
   },
   {
     ...email,
@@ -35,7 +38,7 @@ export const SignupScreen = ({navigation}) => {
     placeholder:"email",
     style:!!email?styles.inputSelected:styles.input,
     isRequiered:true,
-    
+    validEmail:isValidEmail,
   },
   {
     ...password,
@@ -48,7 +51,12 @@ export const SignupScreen = ({navigation}) => {
   }]
 
   const handleSingUp = () =>{
-    signUp(email.value, password.value);
+    signUp(email.value, password.value, setIsValidEmail);
+    if (isValidEmail) {
+      setVisible(false)
+    } else {
+      setVisible(true)
+    }
   }
 
   const handleLogin = () => {
@@ -67,7 +75,21 @@ export const SignupScreen = ({navigation}) => {
        <>
         <Text>Use 8 or more characters with a mix of letters, numbers and symbols</Text>        
         <Check value={terms.value}  onValueChange={terms.onChangeText} text={"I agree to the Terms and Privacy Policy"}/>
-        <Check value={subscribe.value}  onValueChange={subscribe.onChangeText}  text={"Suscribe for select product updates."}/>
+        <Check value={subscribe.value} onValueChange={subscribe.onChangeText} text={"Suscribe for select product updates."} />
+        {!isValidEmail&& 
+        <>
+          <Text style={styles.differentEmail}>
+            Email in use. Use a different email
+          </Text>
+        </>
+        }
+        {!canSubmitLogin&& 
+        <>
+          <Text style={styles.incorrectText}>
+            Incorrect email and/or password
+          </Text>
+        </>
+        }
        </>
        } 
         <View style={styles.content}>
@@ -86,6 +108,15 @@ export const SignupScreen = ({navigation}) => {
                 </TouchableOpacity>
             </View>
         </View>
+        <AnimatedLoader
+            visible={visible}
+            overlayColor="rgba(255,255,255,0.75)"
+            source={require("../../assets/lf30_editor_8jfivmsk.json")}
+            animationStyle={styles.lottie}
+            speed={1}
+          >
+            <Text>Signing up...</Text>
+          </AnimatedLoader>
     </View>
   );
 }; 
