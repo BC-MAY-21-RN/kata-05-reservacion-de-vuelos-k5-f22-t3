@@ -8,7 +8,7 @@ import { InputText } from '../../components/InputText';
 import useAuthForm from '../../library/hooks/useAuthForm';
 import { signIn, signUp } from '../../library/utils/auth'
 import { TitleText } from '../../library/utils/styledGlobal';
-import AnimatedLoader from "react-native-animated-loader";
+import AnimatedLoader from 'react-native-animated-loader';
 
 export const SignupScreen = ({navigation}) => {
   const {   
@@ -110,10 +110,10 @@ export const SignupScreen = ({navigation}) => {
         </View>
         <AnimatedLoader
             visible={visible}
-            overlayColor="rgba(255,255,255,0.75)"
+            overlayColor="rgba(97,11,246,0.75)"
             source={require("../../assets/lf30_editor_8jfivmsk.json")}
             animationStyle={styles.lottie}
-            speed={1}
+            speed={.1}
           >
             <Text>Signing up...</Text>
           </AnimatedLoader>

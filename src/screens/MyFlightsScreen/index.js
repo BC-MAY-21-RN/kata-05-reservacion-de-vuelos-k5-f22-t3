@@ -13,14 +13,14 @@ export const MyFlightsScreen = ({navigation}) => {
   const [allBookings, setAllBookings] = useState([])
   const [refreshing, setRefreshing] = useState(false)
 
-  //auth()._user.uid
+  {/*auth()._user.uid*/}
   console.log(auth()._user.email)
   
   const getAllBookings = async () => {
     setRefreshing(true);
     
     const bookings = await getBookings(auth()._user.email);
-    // Transform data
+    {/*Transform data*/}
     let tempBookings = [];
     await bookings.docs.forEach(async booking => {
       await tempBookings.push({id: booking.id, ...booking.data()});

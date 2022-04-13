@@ -6,7 +6,7 @@ import { Calendar } from 'react-native-calendars';
 
 export const CalendarScreen = ({navigation, route}) => {
     const { beg, ams } = route.params;
-    const INITIAL_DATE = '2020-02-02';
+    const INITIAL_DATE = '2022-04-02';
     const [selected, setSelected] = useState(INITIAL_DATE);
     const onDayPress = useCallback(day => {
       setSelected(day.dateString);
@@ -20,7 +20,15 @@ export const CalendarScreen = ({navigation, route}) => {
     <ContainerView>
         <Text>Select date</Text>
         <Calendar enableSwipeMonths current={INITIAL_DATE} style={styles.calendar} onDayPress={onDayPress} markedDates={marked} />
-        <View> <ButtonPrimary text={"Next"} onPress={() => {navigation.navigate({name: 'Passengers', params: { beg : beg, ams : ams, selected: selected,}, merge: true,});}}/></View>
+        <View> 
+            <ButtonPrimary 
+                text={"Next"} 
+                onPress={() => {navigation.navigate({
+                    name: 'Passengers', 
+                    params: { beg : beg, ams : ams, selected: selected,}, 
+                    merge: true,});
+                }}/>
+        </View>
     </ContainerView>
   );  
 };
