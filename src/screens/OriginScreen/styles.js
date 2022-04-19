@@ -9,11 +9,11 @@ export const styles = StyleSheet.create({
         margin: 3,
     },
     whereLine:{
-        padding: 10,
-        borderColor: 'gray',
         borderBottomWidth: 1,
-        width: '100%',
+        borderColor: 'gray',
         borderRadius: 5,
         marginTop: 10,
+        padding: 10,
+        width: '100%',
     }
 })

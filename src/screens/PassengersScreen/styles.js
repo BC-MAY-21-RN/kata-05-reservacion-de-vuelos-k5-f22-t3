@@ -16,18 +16,18 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   container:{
+    borderBottomWidth: 0.2,
+    borderColor: '#dbdbdb',
+    borderTopWidth: 0.3,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: 5,
     paddingBottom: 5,
-    borderColor: '#dbdbdb',
-    borderTopWidth: 0.3,
-    borderBottomWidth: 0.2,
   },
   numberSelect: {
     color: 'black',
-    fontWeight: 'bold',
     fontSize: 30,
+    fontWeight: 'bold',
   },
   numberDisable: {
     color: 'black',

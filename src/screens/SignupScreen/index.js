@@ -113,7 +113,7 @@ export const SignupScreen = ({navigation}) => {
             overlayColor="rgba(97,11,246,0.75)"
             source={require("../../assets/lf30_editor_8jfivmsk.json")}
             animationStyle={styles.lottie}
-            speed={.1}
+            speed={1}
           >
             <Text>Signing up...</Text>
           </AnimatedLoader>
